@@ -83,6 +83,20 @@ etf_df <- etf_df %>%
 futures_df <- futures_df %>%
   pivot_longer(cols = -Date, names_to = "Ticker", values_to = "Return")
 
+# Add a risk-free rate to account for div yield on ACWI
+rfr_df <- read.csv("~/Documents/Financial Data/daily_interest_rates.csv")
+
+# Clean risk-free data
+rfr_df <- rfr_df %>%
+  pivot_longer(cols = -Date, names_to = "Ticker", values_to = "Return") %>%
+  filter(Ticker == "US0003M") %>%
+  mutate(Date = as.Date(Date)) %>%
+  drop_na()
+
+# Merge risk-free rate with futures data
+futures_df <- futures_df %>%
+  bind_rows(rfr_df)
+
 # Convert Date to Date class
 etf_df$Date <- as.Date(etf_df$Date)
 futures_df$Date <- as.Date(futures_df$Date)
