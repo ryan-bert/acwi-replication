@@ -67,7 +67,7 @@ run_optimization <- function(data, target_date, n = 60) {
   return(weights)
 }
 
-######################## MAIN ########################
+######################### MAIN #########################
 
 # Get current dir using $ofile
 current_dir <- dirname(getActiveDocumentContext()$path)
