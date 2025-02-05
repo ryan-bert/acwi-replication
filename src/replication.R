@@ -1,10 +1,12 @@
-library(dplyr)
-library(readr)
-library(tidyr)
-library(CVXR)
-library(purrr)
-library(ggplot2)
-library(rstudioapi)
+suppressMessages({
+  library(dplyr)
+  library(readr)
+  library(tidyr)
+  library(CVXR)
+  library(purrr)
+  library(ggplot2)
+  library(rstudioapi)
+})
 
 ###################### FUNCTIONS ######################
 
